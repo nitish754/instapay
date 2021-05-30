@@ -5,7 +5,7 @@ This is test reposity
 HOW TO USE 
 
 clone repo 
-git clone 
+git clone https://github.com/nitish754/instapay.git
 
 run command composer update so all dependency and vendor will be downloaded 
 
