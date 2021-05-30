@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+
+    <div>
+
+        <table border=" solid #000" cellpadding="10px">
+            <thead>
+                <th>Module</th>
+                <th>Method</th>
+                <th>End Point</th>
+                <th>Request format</th>
+                <th>Response</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Signup</td>
+                    <td>POST</td>
+                    <td>/api/v1/signup</td>
+                    <td>
+                        { "name" : "nitish jha", "email": "ernitish1993@gmail.com", "contact" : "9082415301" , "password": "1234567" }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Login</td>
+                    <td>POST</td>
+                    <td>/api/v1/login</td>
+                    <td>
+                        { "email": "ernitish1993@gmail.com", "password": "12345678" }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Create Board</td>
+                    <td>POST</td>
+                    <td>/api/v1/board</td>
+                    <td>
+                        { "email": "ernitish1993@gmail.com", "password": "12345678" }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fetch Board</td>
+                    <td>GET</td>
+                    <td>/api/v1/board</td>
+                    <td>
+                        send bearer token in header
+                    </td>
+                </tr>
+                <tr>
+                    <td>Update Board</td>
+                    <td>PUT</td>
+                    <td>/api/v1/board/{board_id}</td>
+                    <td>
+                        { "name":"My Board 1", "visibility": "Private", "description" : "This is my first board" }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Delete Board</td>
+                    <td>DELETE</td>
+                    <td>/api/v1/board/{board_id}</td>
+                    <td>
+                        NONE
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fetch List</td>
+                    <td>GET</td>
+                    <td>/api/v1/list</td>
+                    <td>
+                        { "name" : "List 1", "board_id" : 4 }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Create List</td>
+                    <td>POST</td>
+                    <td>/api/v1/list</td>
+                    <td>
+                        { "name" : "List 1", "board_id" : 4 }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Update List</td>
+                    <td>PUT</td>
+                    <td>/api/v1/list/{list_id}</td>
+                    <td>
+                        { "name" : "List 1", "board_id" : 4 }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Delete List</td>
+                    <td>DELETE</td>
+                    <td>/api/v1/list/{list_id}</td>
+                    <td>
+                        NONE
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Create Task</td>
+                    <td>POST</td>
+                    <td>/api/v1/task</td>
+                    <td>
+                        { "title" : "this is my second 12 task", "list_id" : 2, "description": "this is my first task to do ", "priority" : "high" }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Update Task</td>
+                    <td>PUT</td>
+                    <td>/api/v1/task/{task_id}</td>
+                    <td>
+                        { "title" : "this is my second 12 task", "list_id" : 2, "description": "this is my first task to do ", "priority" : "high" }
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>TASK LIST</td>
+                    <td>GET</td>
+                    <td>/api/v1/task/list/{list_id}</td>
+                    <td>
+                        NONE
+                    </td>
+                </tr>
+                <tr>
+                    <td>DELETE TASK</td>
+                    <td>DELETE</td>
+                    <td>/api/v1/task/{task_id}</td>
+                    <td>
+                        NONE
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+
+</html>
