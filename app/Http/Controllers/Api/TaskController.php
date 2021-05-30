@@ -15,15 +15,14 @@ class TaskController extends Controller
      */
     public function index($list_id)
     {
-        $task=Task::fetch($list_id);
-        if(count($task) > 0){
+        $task = Task::fetch($list_id);
+        if (count($task) > 0) {
             $response['message'] = "Task found successfully";
             $response["data"] = $task;
-            return response()->json($response,200);
-        }else {
-            return response()->json(["message"=> "No task found"]);
+            return response()->json($response, 200);
+        } else {
+            return response()->json(["message" => "No task found"]);
         }
-        
     }
 
     /**
@@ -44,10 +43,10 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = Task::createTask(["title"=>$request->title,"list_id"=>$request->list_id,"description"=>$request->description,"priority"=>$request->priority]);
+        $task = Task::createTask(["title" => $request->title, "list_id" => $request->list_id, "description" => $request->description, "priority" => $request->priority]);
         $response['message'] = "Task created successfully";
         $response["data"] = $task;
-        return response()->json($response,200);
+        return response()->json($response, 200);
     }
 
     /**
@@ -81,10 +80,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task = Task::updateTask(["title"=>$request->title,"list_id"=>$request->list_id,"description"=>$request->description,"priority"=>$request->priority,"task_id"=>$id]);
+        $task = Task::updateTask(["title" => $request->title, "list_id" => $request->list_id, "description" => $request->description, "priority" => $request->priority, "task_id" => $id]);
         $response['message'] = "Task updated successfully";
         $response["data"] = $task;
-        return response()->json($response,200);
+        return response()->json($response, 200);
     }
 
     /**
@@ -96,6 +95,6 @@ class TaskController extends Controller
     public function destroy($id)
     {
         Task::destroy($id);
-        return response()->json(["message"=>"Task deleted successfully"]);
+        return response()->json(["message" => "Task deleted successfully"]);
     }
 }

@@ -8,7 +8,8 @@ class Task extends Model
 {
     protected $guarded = [];
 
-    public static function createTask(array $data){
+    public static function createTask(array $data)
+    {
         return Task::create([
             "title" => $data['title'],
             "list_id" => $data['list_id'],
@@ -17,7 +18,8 @@ class Task extends Model
         ]);
     }
 
-    public static function updateTask(array $data){
+    public static function updateTask(array $data)
+    {
         $update = Task::find($data["task_id"]);
         $update->title = $data['title'];
         $update->list_id = $data['list_id'];
@@ -26,8 +28,8 @@ class Task extends Model
         return $update;
     }
 
-    public static function fetch($list_id){
-        return Task::where("list_id",$list_id)->get();
+    public static function fetch($list_id)
+    {
+        return Task::where("list_id", $list_id)->get();
     }
-  
 }

@@ -18,32 +18,32 @@ class BoardController extends Controller
     // fetch list 
     public function index()
     {
-        if(count(Board::fetch()) > 0){
-            $response['message']= "Board found successfully";
+        if (count(Board::fetch()) > 0) {
+            $response['message'] = "Board found successfully";
             $response['board'] = Board::fetch();
-            return response()->json($response,200);
-        }else{
+            return response()->json($response, 200);
+        } else {
             $response['message'] = "No Board found";
-            return response()->json($response,404);
-        }   
+            return response()->json($response, 404);
+        }
     }
 
     // store board in table
     public function store(BoardRequest $request)
-    {   
-        if($this->board->checkDuplicate($request->name) == 0){
-            $board = Board::createRecord(["name"=>$request->name,"visibility"=>$request->visibility,"description"=>$request->description]);
-        if($board){
-            $response['board'] = $board;
-            $response['message'] = "board created successfully";
-            return response()->json($response,200);
-        }else{
-            $response['error'] = "something went wrong";
-            return response()->json($response,500);
-        }
-        }else{
+    {
+        if ($this->board->checkDuplicate($request->name) == 0) {
+            $board = Board::createRecord(["name" => $request->name, "visibility" => $request->visibility, "description" => $request->description]);
+            if ($board) {
+                $response['board'] = $board;
+                $response['message'] = "board created successfully";
+                return response()->json($response, 200);
+            } else {
+                $response['error'] = "something went wrong";
+                return response()->json($response, 500);
+            }
+        } else {
             $response["error"] = "This board is alreday exist with this user";
-            return response()->json($response,200);
+            return response()->json($response, 200);
         }
     }
 
@@ -51,21 +51,20 @@ class BoardController extends Controller
     // update resource 
     public function update(BoardRequest $request, $id)
     {
-        if($this->board->checkDuplicate($request->name) == 1){
-            $board =Board::createRecord(["board_id"=>$id,"name"=>$request->name,"visibility"=>$request->visibility,"description"=>$request->description]);
-            if($board){
+        if ($this->board->checkDuplicate($request->name) == 1) {
+            $board = Board::updateRecord(["board_id" => $id, "name" => $request->name, "visibility" => $request->visibility, "description" => $request->description]);
+            if ($board) {
                 $response['board'] = $board;
                 $response['message'] = "board updated successfully";
-                return response()->json($response,200);
-            }else{
+                return response()->json($response, 200);
+            } else {
                 $response['error'] = "something went wrong";
-                return response()->json($response,500);
+                return response()->json($response, 500);
             }
-        }else{
+        } else {
             $response["error"] = "This board is alreday exist with this user";
-            return response()->json($response,200);
+            return response()->json($response, 200);
         }
-        
     }
     /* 
         I am using permanent delete we can use soft delete instead
@@ -74,6 +73,6 @@ class BoardController extends Controller
     public function destroy($id)
     {
         Board::destroy($id);
-        return response(["message"=>"Board deleted successfully"],200);
+        return response(["message" => "Board deleted successfully"], 200);
     }
 }

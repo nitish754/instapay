@@ -20,13 +20,13 @@ use Illuminate\Http\Request;
 
 // auth routes 
 
-Route::post('login',"Api\UserController@Login");
-Route::post('signup',"Api\UserController@Register");
+Route::post('login', "Api\UserController@Login");
+Route::post('signup', "Api\UserController@Register");
 
-Route::group(["middleware"=>"auth:api"],function(){
+Route::group(["middleware" => "auth:api"], function () {
     Route::resource('board', 'Api\BoardController');
-    Route::resource('list', 'Api\ListController')->except(["index","show","create","edit"]);
-    Route::resource('task', 'Api\TaskController')->except(["index","show","create","edit"]);
-    Route::get('list/{board_id}','Api\ListController@index');
-    Route::get('task/list/{list_id}',"Api\TaskController@index");
+    Route::resource('list', 'Api\ListController')->except(["index", "show", "create", "edit"]);
+    Route::resource('task', 'Api\TaskController')->except(["index", "show", "create", "edit"]);
+    Route::get('list/{board_id}', 'Api\ListController@index');
+    Route::get('task/list/{list_id}', "Api\TaskController@index");
 });

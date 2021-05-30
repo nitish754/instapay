@@ -16,14 +16,23 @@ class Board extends Model
 
     public static function createRecord(array $data)
     {
-        return Board::updateOrCreate(
-            ["id"=>$data["board_id"]],
-            [
+        return Board::create([
             "name" => $data["name"],
             "user_id" => auth()->guard('api')->user()->id,
             "visibility" => $data['visibility'],
             "description" => $data['description']
         ]);
+    }
+
+    public static function updateRecord(array $data)
+    {
+        $update = Board::find($data['board_id']);
+        $update->name = $data["name"];
+        $update->user_id = auth()->guard('api')->user()->id;
+        $update->visibility = $data["visibility"];
+        $update->description = $data["description"];
+        $update->save();
+        return $update;
     }
 
     public static function checkDuplicate($value)
@@ -37,6 +46,4 @@ class Board extends Model
             ->where("user_id", auth()->guard('api')->user()->id)
             ->get();
     }
-
-   
 }
