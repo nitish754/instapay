@@ -51,7 +51,7 @@ class BoardController extends Controller
     // update resource 
     public function update(BoardRequest $request, $id)
     {
-        if ($this->board->checkDuplicate($request->name) == 1) {
+        if ($this->board->checkDuplicate($request->name) == 1 || $this->board->checkDuplicate($request->name) == 0) {
             $board = Board::updateRecord(["board_id" => $id, "name" => $request->name, "visibility" => $request->visibility, "description" => $request->description]);
             if ($board) {
                 $response['board'] = $board;
