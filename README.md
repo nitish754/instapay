@@ -14,3 +14,5 @@ create blank database and configure it in .env file
 and run php artisan migrate 
 
 
+You can find all end point for this repo by just browsing end-point.html 
+
